@@ -1,0 +1,75 @@
+/* Report Page Container */
+.report-container {
+    text-align: center;
+    font-family: Arial, sans-serif;
+    padding: 20px;
+  }
+  
+  /* Title */
+  .report-title {
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  /* Content Layout */
+  .report-content {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+  }
+  
+  /* Incident Box */
+  .incident-box {
+    background-color: #66ff66;
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+    text-align: left;
+    font-size: 16px;
+    font-weight: 500;
+  }
+  
+  /* Coordinates */
+  .coordinates {
+    font-size: 14px;
+    color: #333;
+    font-style: italic;
+  }
+  
+  /* Reopen Button */
+  .reopen-btn {
+    display: block;
+    background-color: gray;
+    color: white;
+    border: none;
+    padding: 10px;
+    margin-top: 15px;
+    width: 100%;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+  .reopen-btn:hover {
+    background-color: #444;
+  }
+  
+  /* Table */
+  .report-table {
+    width: 300px;
+    border-collapse: collapse;
+    font-size: 16px;
+  }
+  
+  .report-table th, .report-table td {
+    border: 2px solid black;
+    padding: 10px;
+    text-align: left;
+  }
+  
+  .report-table th {
+    font-weight: bold;
+  }
+  

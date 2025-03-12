@@ -40,10 +40,10 @@
   }
   
   p {
-    font-size: 14px;
+    font-size: 18px;
     margin-bottom: 20px;
   }
-  
+
   .alerts-grid {
     display: flex;
     justify-content: center;
@@ -70,16 +70,51 @@
     font-size: 12px;
   }
   
-  .real-time-btn {
-    margin-top: 20px;
-  }
-  
-  .real-time-btn button {
-    background: gray;
-    padding: 10px 20px;
-    border-radius: 20px;
-    cursor: pointer;
-    color: white;
-    font-size: 16px;
-  }
-  
+  /* Even smaller real-time button */
+.real-time-btn button {
+  background: gray;
+  padding: 3px 15px; /* Smaller padding */
+  border-radius: 18px; /* Smaller rounded corners */
+  cursor: pointer;
+  color: black;
+  font-size: 18px; /* Smaller text size */
+  border: none;
+  transition: background-color 0.3s ease;
+  display: inline-flex; /* Ensures button doesn't stretch */
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* Even smaller logout button */
+.logout-btn {
+  padding: 5px 10px; /* Smaller padding */
+  border-radius: 8px; /* Smaller rounded corners */
+  background: gray;
+ 
+  font-size: 18px; /* Smaller text size */
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.logout-btn:hover {
+  background-color: navy;
+}
+
+/* Adjustments to ensure proper layout around buttons */
+.real-time-btn, .logout-btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin: 3px 15; /* Smaller space between buttons */
+}
+
+/* Optional: Limit the size of the parent container if necessary */
+.real-time-btn, .logout-btn {
+  max-width: fit-content;
+}

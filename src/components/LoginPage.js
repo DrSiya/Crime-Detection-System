@@ -1,27 +1,34 @@
 import React, { useState } from 'react';
 import './LoginPage.css';
+import { useNavigate } from 'react-router-dom';
+
 
 const LoginPage = () => {
   console.log('LoginPage component is rendering'); // Debug log
+
+  
+
 
   const [username, setUsername] = useState('');
   // const [email, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [rememberMe, setRememberMe] = useState(false);
+  const navigate = useNavigate();  // useNavigate hook to programmatically navigate
 
-
+  
+// };
   const handleSubmit = (e) => {
     e.preventDefault();
     if (username === '' || password === '') {
       setError('Both fields are required.');
       return;
     }
-    if (username === 'admin' && password === 'password') {
+    if (username === 'admin' && password === 'P@ssw0rd') {
       if (rememberMe) {
         localStorage.setItem('username', username); // Store username if remember me is checked
       }
-      alert('Login successful!');
+      navigate('/alerts');
     } else {
       setError('Invalid credentials.');
     }

@@ -1,73 +1,67 @@
-// import React from 'react';
-// import { Link } from 'react-router-dom';
+import React , { useState } from 'react';
+import { Link } from 'react-router-dom';
 import './Alerts.css';
-import React, { useState } from 'react';
 
 
 const alertsData = [
   { id: 1, type: 'Gun shot', status: 'Closed', color: 'green' },
   { id: 2, type: 'Abnormal noise', status: 'Open', color: 'red' },
-  { id: 3, type: 'Theft', status: 'Open', color: 'red' }
+  { id: 3, type: 'Abnormal noise', status: 'Open', color: 'red' }
 ];
 
 
 const Alerts = () => {
 
-  // const goToPage = (page) => {
-  //   window.location.href = page;
-  // };
-  const [activePage, setActivePage] = useState('alerts'); // Default to 'alerts'
+   const [activePage, setActivePage] = useState('alerts'); // default active page
 
-  // Function to handle navigation
-  const goToPage = (page) => {
-    setActivePage(page); // Set the active page when clicked
-    window.location.href = `/${page}`; // Navigate to the page
-  };
-
+   // Handle link click and set active page
+   const handleClick = (page) => {
+     setActivePage(page);
+   };
   return (
     <div className="alerts-container">
       <nav className="nav-bar">
-        {/* <button onClick={() => goToPage('/dashboard')}>HOME</button>
-        <button onClick={() => goToPage('/live-monitoring')}>LIVE MONITORING</button>
-        <button onClick={() => goToPage('/alerts')} className="active">ALERTS</button>
-        <button onClick={() => goToPage('/reports')}>REPORTS</button>
-        <button className="logout-btn">Logout</button>
-        <div className="user-icon">
-          <i className="fas fa-user"></i>
-        </div> */}
-      <button
-          onClick={() => goToPage('dashboard')}
-          style={{ fontWeight: activePage === 'dashboard' ? 'bold' : 'normal' }}
-        >
-          HOME
-        </button>
-        <button
-          onClick={() => goToPage('live-monitoring')}
-          style={{ fontWeight: activePage === 'live-monitoring' ? 'bold' : 'normal' }}
-        >
-          LIVE MONITORING
-        </button>
-        <button
-          onClick={() => goToPage('alerts')}
-          style={{ fontWeight: activePage === 'alerts' ? 'bold' : 'normal' }}
-        >
-          ALERTS
-        </button>
-        <button
-          onClick={() => goToPage('reports')}
-          style={{ fontWeight: activePage === 'reports' ? 'bold' : 'normal' }}
-        >
-          REPORTS
-        </button>
-        <button className="logout-btn">Logout</button>
-        <div className="user-icon">
-          <i className="fas fa-user"></i>
-        </div>
+      <Link 
+        to="/" 
+        onClick={() => handleClick('home')} 
+        style={{ fontWeight: activePage === 'home' ? 'bold' : 'normal', textDecoration: 'none' }}
+      >
+        HOME
+      </Link>
+      <Link 
+        to="/live-monitoring" 
+        onClick={() => handleClick('live-monitoring')} 
+        style={{ fontWeight: activePage === 'live-monitoring' ? 'bold' : 'normal', textDecoration: 'none' }}
+      >
+        LIVE MONITORING
+      </Link>
+
+      <Link 
+        to="/alerts" 
+        onClick={() => handleClick('alerts')} 
+        style={{ fontWeight: activePage === 'alerts' ? 'bold' : 'normal', textDecoration: 'none' }}
+      >
+        ALERTS
+      </Link>
+
+      <Link 
+        to="/reports" 
+        onClick={() => handleClick('reports')} 
+        style={{ fontWeight: activePage === 'reports' ? 'bold' : 'normal', textDecoration: 'none' }}
+      >
+        REPORTS
+      </Link>
+    
+      <button className="logout-btn">Logout</button>
+      <div className="user-icon">
+        <i className="fas fa-user"></i>
+      </div>
       </nav>
-
-      <h1>Alerts</h1>
+      
+      {/* <h1>Alerts</h1> */}
+      <br></br>
       <p>Double-click on the alert to view detailed report</p>
-
+      <br></br>
       <div className="alerts-grid">
         {alertsData.map((alert) => (
           <div
@@ -81,7 +75,7 @@ const Alerts = () => {
           </div>
         ))}
       </div>
-
+<br></br>
       <div className="real-time-btn">
         <button>Real-Time ➝</button>
       </div>
