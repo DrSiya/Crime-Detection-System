@@ -6,14 +6,11 @@ import { useNavigate } from 'react-router-dom';
 const LoginPage = () => {
   console.log('LoginPage component is rendering'); // Debug log
 
-  
-
 
   const [username, setUsername] = useState('');
   // const [email, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const [rememberMe, setRememberMe] = useState(false);
   const navigate = useNavigate();  // useNavigate hook to programmatically navigate
 
   
@@ -25,9 +22,6 @@ const LoginPage = () => {
       return;
     }
     if (username === 'admin' && password === 'P@ssw0rd') {
-      if (rememberMe) {
-        localStorage.setItem('username', username); // Store username if remember me is checked
-      }
       navigate('/alerts');
     } else {
       setError('Invalid credentials.');
@@ -36,12 +30,8 @@ const LoginPage = () => {
 
   return (
     <div className="login-page">
-      {/* <div className="background-container"> */}
-      <div className="background-container" >
-
-
-        {/* This will be the background area */}
-      </div>
+      <div className="image-container"></div>
+       <br></br>
     <div className="login-container">
       <h2>Login to SmartGuard</h2>
       <form onSubmit={handleSubmit}>
@@ -80,7 +70,7 @@ const LoginPage = () => {
         </div>
 
          {/* Remember Me Checkbox */}
-         <div className="remember-me">
+         {/* <div className="remember-me">
           <label>
             <input
               type="checkbox"
@@ -89,20 +79,8 @@ const LoginPage = () => {
             />
             Remember Me
           </label>
-        </div>
-
-
-        {/* <div>
-          <label htmlFor="password">Code</label>
-          <input
-            type="password"
-            id="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="Please enter your password"
-            required
-          />
         </div> */}
+
 
         {error && <p style={{ color: 'red' }}>{error}</p>}
 
