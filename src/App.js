@@ -1,21 +1,34 @@
-import './App.css';
 import React from 'react';
-// import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'; // Add this import for routing
-import LoginPage from './components/LoginPage'; // Import LoginPage
-// import LoginPage from "./LoginPage";
-
+// import LoginPage from './components/LoginPage';
+// import Alerts from './components/Alerts';
+import './App.css';
+// import LoginPage from './components/LoginPage';
+import AlertsPage from './components/Alerts';
 
 function App() {
+  // const [currentPage, setCurrentPage] = useState("login");
+
   return (
-      <div className="App">
-        <LoginPage />
-      </div>
-    );
-  //   <Router>  {/* Using Router as alias for BrowserRouter */}
-  //   <Routes>
-  //     <Route path="/" element={<LoginPage />} />
-  //   </Routes>
-  // </Router>
+  //   <div>
+  //   <nav>
+  //     <div onClick={() => setCurrentPage("login")} style={{ cursor: "pointer", margin: "10px" }}>
+  //       Login
+  //     </div>
+  //     <div onClick={() => setCurrentPage("alerts")} style={{ cursor: "pointer", margin: "10px" }}>
+  //       Alerts
+  //     </div>
+  //   </nav>
+    
+  //   <div>
+  //     {currentPage === "login" && <LoginPage />}
+  //     {currentPage === "alerts" && <Alerts />}
+  //   </div>
+  // </div>
+  
+  <div>
+      <AlertsPage />
+    </div>
+  );
 }
 
 export default App;
