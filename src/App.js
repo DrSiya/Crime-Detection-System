@@ -5,6 +5,7 @@ import LoginPage from './components/LoginPage';
 import AlertsPage from './components/Alerts';
 import ReportPage from './components/ReportPage';
 import LiveMonitoring from './components/LiveMonitoring';
+import Register from './components/Register';
 
 
 function App() {
@@ -18,6 +19,8 @@ function App() {
       <Route path="/alerts" element={<AlertsPage />} />
       <Route path="/reports" element={<ReportPage />} />
       <Route path="/live-monitoring" element={<LiveMonitoring />} />
+      <Route path="/register" element={<Register />} />
+       <Route path="/login" element={<LoginPage />} />
     </Routes>
   </Router>
  
