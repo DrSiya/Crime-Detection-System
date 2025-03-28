@@ -1,0 +1,49 @@
+﻿/* Report Page Container */
+.escalation-container {
+    text-align: center;
+    font-family: Arial, sans-serif;
+    padding: 20px;
+  }
+  
+  /* Title */
+  .report-title {
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+ 
+  /* Reopen Button */
+  .reopen-btn {
+    display: block;
+    background-color: gray;
+    color: white;
+    border: none;
+    padding: 10px;
+    margin-top: 15px;
+    width: 100%;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+  .reopen-btn:hover {
+    background-color: #444;
+  }
+  
+  /* Table */
+  .report-table {
+    width: 300px;
+    border-collapse: collapse;
+    font-size: 16px;
+  }
+  
+  .report-table th, .report-table td {
+    border: 2px solid black;
+    padding: 10px;
+    text-align: left;
+  }
+  
+  .report-table th {
+    font-weight: bold;
+  }
+  

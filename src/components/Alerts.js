@@ -51,7 +51,16 @@ const Alerts = () => {
       >
         REPORTS
       </Link>
-    
+    <Link
+          to="/escalation"
+          onClick={() => handleClick("/escalation")}
+          style={{
+            fontWeight: activePage === "/escalation" ? "bold" : "normal",
+            textDecoration: "none",
+          }}
+        >
+          ESCALATION
+          </Link>
       <button className="logout-btn">Logout</button>
       <div className="user-icon">
         <i className="fas fa-user"></i>

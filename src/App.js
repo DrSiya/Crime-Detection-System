@@ -6,6 +6,7 @@ import AlertsPage from './components/Alerts';
 import ReportPage from './components/ReportPage';
 import LiveMonitoring from './components/LiveMonitoring';
 import Register from './components/Register';
+import Escalation from './components/Escalation';
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
       <Route path="/live-monitoring" element={<LiveMonitoring />} />
       <Route path="/register" element={<Register />} />
        <Route path="/login" element={<LoginPage />} />
+       <Route path="/escalation" element={<Escalation />} />
     </Routes>
   </Router>
  
