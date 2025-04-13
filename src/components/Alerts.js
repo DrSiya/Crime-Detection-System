@@ -46,8 +46,8 @@ const Alerts = () => {
 
       <Link 
         to="/reports" 
-        onClick={() => handleClick('reports')} 
-        style={{ fontWeight: activePage === 'reports' ? 'bold' : 'normal', textDecoration: 'none' }}
+        onClick={() => handleClick('/reports')} 
+        style={{ fontWeight: activePage === '/reports' ? 'bold' : 'normal', textDecoration: 'none' }}
       >
         REPORTS
       </Link>

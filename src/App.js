@@ -8,6 +8,12 @@ import LiveMonitoring from './components/LiveMonitoring';
 import Register from './components/Register';
 import Escalation from './components/Escalation';
 
+useEffect(() => {
+  fetch('http://localhost:5000/api/data')
+    .then(res => res.json())
+    .then(data => console.log(data))
+    .catch(err => console.error(err));
+}, []);
 
 function App() {
   // const [currentPage, setCurrentPage] = useState("login");
