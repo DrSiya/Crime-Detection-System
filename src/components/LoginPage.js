@@ -3,63 +3,61 @@ import './LoginPage.css';
 import { useNavigate } from 'react-router-dom';
 
 const LoginPage = () => {
-  const [username, setUsername] = useState('');
+  const [username, setUsername] = useState(''); // Can be user ID or email
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Check if both fields are filled
-    if (username === '' || password === '') {
+    if (!username || !password) {
       setError('Both fields are required.');
       return;
     }
 
-    // Get the registered users from localStorage
-    const registeredUsers = JSON.parse(localStorage.getItem('users')) || [];
-    console.log("Registered Users Retrieved from LocalStorage: ", registeredUsers); // Log to see retrieved users
+    try {
+      const response = await fetch('http://localhost:5000/api/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ username, password }),
+      });
 
-    // Clean up input data (remove any accidental spaces)
-    const cleanedUsername = username.trim();
-    const cleanedPassword = password.trim();
+      const data = await response.json();
 
-    // Find the user that matches both username and password
-    const user = registeredUsers.find(
-      (user) => user.username === cleanedUsername && user.password === cleanedPassword
-    );
+      if (!response.ok) {
+        setError(data.message || 'Login failed.');
+        return;
+      }
 
-    console.log("Found User: ", user); // Log the user if found
-
-    if (user) {
-      // If user found, navigate to the alerts page
+      // Login successful, navigate to alerts
       navigate('/alerts');
-    } else {
-      // If no match found, show error
-      setError('Invalid credentials. Please check your username and password.');
+    } catch (err) {
+      console.error('Login error:', err);
+      setError('Failed to connect to server.');
     }
   };
 
   const handleRegister = () => {
-    navigate('/register'); // Navigate to the register page
+    navigate('/admin'); // Navigate to admin register page
   };
 
   return (
     <div className="login-page">
       <div className="image-container"></div>
-      <br />
       <div className="login-container">
         <h2>Login to SmartGuard</h2>
         <form onSubmit={handleSubmit}>
           <div>
-            <label htmlFor="username">Username</label>
+            <label htmlFor="username">Username (ID or Email)</label>
             <input
               type="text"
               id="username"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-              placeholder="Please enter your username"
+              placeholder="Enter your ID or Email"
               required
             />
           </div>
@@ -71,7 +69,7 @@ const LoginPage = () => {
               id="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              placeholder="Please enter your password"
+              placeholder="Enter your password"
               required
             />
           </div>
@@ -80,8 +78,9 @@ const LoginPage = () => {
 
           <button type="submit">Login</button>
         </form>
+
         <button onClick={handleRegister} style={{ marginTop: '10px' }}>
-          Register
+          Admin
         </button>
       </div>
     </div>
