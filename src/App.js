@@ -7,16 +7,10 @@ import ReportPage from './components/ReportPage';
 import LiveMonitoring from './components/LiveMonitoring';
 import Register from './components/Register';
 import Escalation from './components/Escalation';
+// import HomeDashboard from './components/HomeDashboard'; // Import HomeDashboard component
 
-useEffect(() => {
-  fetch('http://localhost:5000/api/data')
-    .then(res => res.json())
-    .then(data => console.log(data))
-    .catch(err => console.error(err));
-}, []);
 
 function App() {
-  // const [currentPage, setCurrentPage] = useState("login");
 
   return (
     <Router>
@@ -29,6 +23,8 @@ function App() {
       <Route path="/register" element={<Register />} />
        <Route path="/login" element={<LoginPage />} />
        <Route path="/escalation" element={<Escalation />} />
+       {/* <Route path="/" element={<HomeDashboard />} /> */}
+
     </Routes>
   </Router>
  

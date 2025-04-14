@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import './Register.css'; // Create a CSS file for styling
 import { useNavigate } from 'react-router-dom';
+import './Register.css';
 
 const Register = () => {
   const [username, setUsername] = useState('');
@@ -24,18 +24,38 @@ const Register = () => {
       return;
     }
 
-    // Simulate registration logic (e.g., send data to an API)
-    console.log('Registration data:', { username, email, password });
+    // Get existing users from localStorage (if any)
+    const existingUsers = JSON.parse(localStorage.getItem('users')) || [];
+    console.log("Existing Users: ", existingUsers); // Log to see existing users
 
-    // Clear form and error
+    // Check if username already exists
+    if (existingUsers.some(user => user.username === username)) {
+      setError('Username already taken, please choose another.');
+      return;
+    }
+
+    // Create new user data
+    const userData = {
+      username,
+      email,
+      password,
+    };
+
+    // Save new user to localStorage
+    existingUsers.push(userData);
+    localStorage.setItem('users', JSON.stringify(existingUsers));
+
+    // Log to confirm if new user is saved
+    console.log("Updated Users in LocalStorage: ", JSON.parse(localStorage.getItem('users')));
+
+    // Clear form data
     setUsername('');
     setEmail('');
     setPassword('');
     setConfirmPassword('');
     setError('');
-
-    // Redirect to login page after successful registration
-    navigate('/login');
+    alert('✅ Registered successfully!');
+    navigate('/login'); // Redirect to login after successful registration
   };
 
   return (
@@ -54,7 +74,6 @@ const Register = () => {
               required
             />
           </div>
-
           <div>
             <label htmlFor="email">Email</label>
             <input
@@ -66,7 +85,6 @@ const Register = () => {
               required
             />
           </div>
-
           <div>
             <label htmlFor="password">Password</label>
             <input
@@ -78,7 +96,6 @@ const Register = () => {
               required
             />
           </div>
-
           <div>
             <label htmlFor="confirmPassword">Confirm Password</label>
             <input
