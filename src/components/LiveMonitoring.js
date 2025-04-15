@@ -1,14 +1,11 @@
-// JavaScript source code
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import "./LiveMonitoring.css";
 
-// Navbar Component
 const LiveMonitoring = () => {
-  const location = useLocation(); // Get the current route location
-  const [activePage, setActivePage] = useState(location.pathname); // Set active page based on current route
+  const location = useLocation();
+  const [activePage, setActivePage] = useState(location.pathname);
 
-  // Handle link click and set active page
   const handleClick = (page) => {
     setActivePage(page);
   };
@@ -23,7 +20,7 @@ const LiveMonitoring = () => {
           style={{
             fontWeight: activePage === "/" ? "bold" : "normal",
             textDecoration: "none",
-            marginRight: "20px", // Add spacing between links
+            marginRight: "20px",
           }}
         >
           HOME
@@ -56,11 +53,11 @@ const LiveMonitoring = () => {
           style={{
             fontWeight: activePage === "/reports" ? "bold" : "normal",
             textDecoration: "none",
+            marginRight: "20px",
           }}
         >
           REPORTS
         </Link>
-                   
         <Link
           to="/escalation"
           onClick={() => handleClick("/escalation")}
@@ -70,25 +67,30 @@ const LiveMonitoring = () => {
           }}
         >
           ESCALATION
-          </Link>
+        </Link>
         <button className="logout-btn">Logout</button>
-      <div className="user-icon">
-        <i className="fas fa-user"></i>
-      </div>
+        <div className="user-icon">
+          <i className="fas fa-user"></i>
+        </div>
       </nav>
 
       {/* Title and Video Section */}
       <div className="content">
         <h1 className="title">Live Monitoring</h1>
-        <video
-          width="640"
-          height="360"
-          controls
-          className="video-player"
-        >
-          <source src="/path/to/your/video.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
+        <div className="video-grid">
+          <div className="video-wrapper">
+            <video controls>
+              <source src="/videos/Video 1.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <div className="video-wrapper">
+            <video controls>
+              <source src="/videos/Video 2.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
       </div>
     </div>
   );
