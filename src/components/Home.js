@@ -1,24 +1,30 @@
-﻿import React, { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
-import "./LiveMonitoring.css";
+import React, { useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom"; 
+import "./Home.css";
 
-const LiveMonitoring = () => {
+const HomePage = () => {
   const location = useLocation();
+  const navigate = useNavigate(); 
   const [activePage, setActivePage] = useState(location.pathname);
 
   const handleClick = (page) => {
     setActivePage(page);
   };
 
+  
+  const handleLogout = () => {
+    navigate("/login"); 
+  };
+
   return (
-    <div className="live-container">
+    <div className="home-container">
       {/* Navigation Bar */}
       <nav className="nav-bar">
         <Link
           to="/home"
           onClick={() => handleClick("/")}
           style={{
-            fontWeight: activePage === "/home" ? "bold" : "normal",
+            fontWeight: activePage === "/" ? "bold" : "normal",
             textDecoration: "none",
             marginRight: "20px",
           }}
@@ -68,34 +74,23 @@ const LiveMonitoring = () => {
         >
           ESCALATION
         </Link>
-        <button className="logout-btn">Logout</button>
+
+        <button className="logout-btn" onClick={handleLogout}>
+          Logout
+        </button>
+
         <div className="user-icon">
           <i className="fas fa-user"></i>
         </div>
       </nav>
 
-      {/* Title and Video Section */}
-      <div className="content">
-        <h1 className="title">Live Monitoring</h1>
-        <div className="video-grid">
-          <div className="video-wrapper">
-            <video width="300" height="200" controls autoPlay muted>
-              <source src="/videos/Video 1.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-            <p className="video-label">Camera 1 - Tuck Shop</p>
-          </div>
-          <div className="video-wrapper">
-            <video width="300" height="200" controls autoPlay muted>
-              <source src="/videos/Video 2.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-            <p className="video-label">Camera 2 - Jewellery Shop</p>
-          </div>
-        </div>
+      {/* Centered Heading and Image */}
+      <div className="home-content">
+        <h1>Welcome to the SmartGuard System</h1>
+        <img src="/images/CRIMEEEE.png" alt="Crime Scene" className="home-image" />
       </div>
     </div>
   );
 };
 
-export default LiveMonitoring;
+export default HomePage;

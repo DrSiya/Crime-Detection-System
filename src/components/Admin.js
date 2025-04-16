@@ -16,7 +16,7 @@ const Admin = () => {
       setError('Both fields are required.');
       return;
     }
-    if (username === 'admin' && password === 'P@ssw0rd') {
+    if (username === 'admin' && password === '12345') {
       navigate('/register');
     } else {
       setError('Invalid credentials.');

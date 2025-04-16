@@ -33,7 +33,7 @@ const LoginPage = () => {
       }
 
       // Login successful, navigate to alerts
-      navigate('/alerts');
+      navigate('/home');
     } catch (err) {
       console.error('Login error:', err);
       setError('Failed to connect to server.');
