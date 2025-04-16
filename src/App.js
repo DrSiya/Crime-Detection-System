@@ -8,6 +8,7 @@ import LiveMonitoring from './components/LiveMonitoring';
 import Register from './components/Register';
 import Escalation from './components/Escalation';
 import Admin from './components/Admin';
+import Home from './components/Home';
 // import HomeDashboard from './components/HomeDashboard'; // Import HomeDashboard component
 
 
@@ -25,6 +26,7 @@ function App() {
        <Route path="/login" element={<LoginPage />} />
        <Route path="/escalation" element={<Escalation />} />
        <Route path="/admin" element={<Admin />} />
+       <Route path="/home" element={<Home />} />
        {/* <Route path="/" element={<HomeDashboard />} /> */}
 
     </Routes>
